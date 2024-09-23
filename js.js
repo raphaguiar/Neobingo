@@ -1,6 +1,5 @@
 window.onload = initAll;
-var usedNums = new Array(61); // Array de números usados
-
+var usedNums = new Array(61);
 
 function initAll() {
   if (document.getElementById) {
@@ -11,46 +10,37 @@ function initAll() {
   }
 }
 
-
 function newCard() {
   for (var i = 0; i < 20; i++) {
     setSquare(i);
   }
 }
 
-
 function setSquare(thisSquare) {
-  var currentSquare = "square" + thisSquare; // Seleciona o quadrado atual
-
+  var currentSquare = "square" + thisSquare; 
 
   var newNum;
-
-
+  
   do {
-    newNum = getNewNum(); // Gera um número de 1 a 60
-  } while (usedNums[newNum]); // Verifica se o número já foi usado
+    newNum = getNewNum(); 
+  } while (usedNums[newNum]);
 
-
-  usedNums[newNum] = true; // Marca o número como usado
-
+  usedNums[newNum] = true; 
 
   var squareElem = document.getElementById(currentSquare);
-  squareElem.innerHTML = newNum; // Preenche o quadrado com o número gerado
+  squareElem.innerHTML = newNum; 
 
-
-  // Adiciona função de clicar para mudar cor
   squareElem.onclick = function () {
     if (squareElem.style.backgroundColor == 'grey') {
       squareElem.style.backgroundColor = '';
     } else {
-      squareElem.style.backgroundColor = 'grey'; // Muda a cor do quadrado
+      squareElem.style.backgroundColor = 'grey';
     }
   };
 }
 
-
 function getNewNum() {
-  return Math.floor(Math.random() * 60) + 1; // Gera um número de 1 a 60
+  return Math.floor(Math.random() * 60) + 1;
 }
 
 
